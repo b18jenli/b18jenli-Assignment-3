@@ -10,10 +10,20 @@ public class Mountain {
         location = l;
         height = h;
     }
-    public String info(){
-        String tmp;
-        tmp = location + " " + height;
-        return tmp;
+    public String Height(){
+        String h;
+        h= "Height: " + height;
+        return h;
+    }
+    public String Location(){
+        String p;
+        p= "Location: " + location;
+        return p;
+    }
+    public String Name(){
+        String n;
+        n= "Mountain: " + name;
+        return n;
     }
     @Override
     public String toString() {

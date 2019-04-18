@@ -1,5 +1,6 @@
 package com.example.brom.activitiesapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,14 +18,11 @@ public class MainActivity extends AppCompatActivity {
     private String[] mountainLocations = {"Alps", "Alps", "Alaska"};
     private int[] mountainHeights = {4478, 4808, 6190};
 
-
     Mountain m = new Mountain("Matterhorn", "Alps", 4478);
     Mountain m2 = new Mountain("Mont Blanc", "Alps", 4808);
     Mountain m3 = new Mountain("Denali", "Alaska", 6190);
 
-    // Create ArrayLists from the raw data above and use these lists when populating your ListView.
     ArrayList<String> berg = new ArrayList<String>(Arrays.asList(mountainNames));
-
     ArrayList<Mountain> berg2=new ArrayList<>();
 
     @Override
@@ -43,7 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), berg2.get(position).info(), Toast.LENGTH_SHORT).show();
+                Intent appInfo = new Intent(MainActivity.this, Mountain_Details_Activity.class);
+
+                String info= ""+ berg2.get(position).Name()+ " \n " +  berg2.get(position).Location()+ "\n " + berg2.get(position).Height();
+                appInfo.putExtra("name", info);
+
+                startActivity(appInfo);
             }
         });
     }
